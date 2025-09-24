@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Navbar/>
-      <main>
+      <main className="bg-neutral-cream">
         <Hero/>
         <Artwork/>
         <About/>

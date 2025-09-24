@@ -1,5 +1,6 @@
 import { Button, Card, CardBody } from "@heroui/react"
 import useForm from "../hooks/useForm";
+import HeadingUnderline from "../components/HeadingUnderline";
 
 const Contact = () => {
 
@@ -13,13 +14,13 @@ const Contact = () => {
     } = useForm();
 
     return (
-        <section id='contact' className='py-20 px-6 lg:px-12 relative bg-[#3A6E96]'>
-            <div  className='absolute inset-0 bg-[#f8f0e3] rounded-tl-[3rem] z-0'/>
-            <div className='relative max-w-6xl mx-auto z-10'>
+        <section id="contact" className="py-20 px-6 lg:px-12 relative bg-primary-blue-light">
+            <div  className="absolute inset-0 bg-neutral-cream rounded-tl-[3rem] z-0"/>
+            <div className="relative max-w-6xl mx-auto z-10">
                 <div className="text-center mb-16">
-                    <h2 className='text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6'> Work Together</h2>
-                    <div className="w-24 h-0.5 bg-gradient-to-r from-[#ec8cba] to-[#63a3eb] mx-auto mb-6" />
-                    <p className='text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed'>
+                    <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6"> Work Together</h2>
+                    <HeadingUnderline/>
+                    <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
                         Do you want to bring your idea to life? I would love to help you shape your vision and explore how 
                         we can create something truly extraordinary together.
                     </p>
@@ -27,54 +28,54 @@ const Contact = () => {
                 <div className="grid lg:grid-cols-2 gap-12 items-start">
                     {/* Contact Form */}
                     <Card>
-                        <CardBody className='p-8'>
+                        <CardBody className="p-8">
                             <h3 className="text-2xl font-serif font-semibold text-slate-900 mb-6">Contact me</h3>
-                            <form className='space-y-6' onSubmit={handleSubmit} >
-                                <div className='grid md:grid-cols-2 gap-4'>
-                                    <div className='space-y-2'>
-                                        <label htmlFor="name" className='text-sm font-medium text-gray-700 '>
+                            <form className="space-y-6" onSubmit={handleSubmit} >
+                                <div className="grid md:grid-cols-2 gap-4">
+                                    <div className="space-y-2">
+                                        <label htmlFor="name" className="text-sm font-medium text-gray-700 ">
                                             Full Name *
                                         </label>
                                         <input 
                                             type="text" 
-                                            id='name'
-                                            name='name'
+                                            id="name"
+                                            name="name"
                                             required
                                             value={contactForm.name}
                                             onChange={handleInputChange}
-                                            className='w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-slate-50 focus:bg-white'
-                                            placeholder='Your name'
+                                            className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-slate-50 focus:bg-white"
+                                            placeholder="Your name"
                                         />
                                     </div>
-                                    <div className='space-y-2'>
-                                        <label htmlFor="email" className='text-sm font-medium text-gray-700 '>
+                                    <div className="space-y-2">
+                                        <label htmlFor="email" className="text-sm font-medium text-gray-700 ">
                                             E-mail *
                                         </label>
                                         <input 
                                             type="email" 
-                                            id='email'
-                                            name='email'
+                                            id="email"
+                                            name="email"
                                             required
                                             value={contactForm.email}
                                             onChange={handleInputChange}
-                                            className='w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-slate-50 focus:bg-white'
-                                            placeholder='examplemail@gmail.com'
+                                            className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-slate-50 focus:bg-white"
+                                            placeholder="examplemail@gmail.com"
                                         />
                                     </div>
                                 </div>
-                                <div className='space-y-2'>
-                                        <label htmlFor="subject" className='text-sm font-medium text-gray-700'>
+                                <div className="space-y-2">
+                                        <label htmlFor="subject" className="text-sm font-medium text-gray-700">
                                             Subject *
                                         </label>
                                         <select
-                                            id='consultationType'
-                                            name='consultationType'
+                                            id="consultationType"
+                                            name="consultationType"
                                             required
                                             value={contactForm.consultationType}
                                             onChange={handleInputChange}
                                             className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-slate-50 focus:bg-white"
                                         >
-                                            <option value='' disabled >Choose a option</option>
+                                            <option value="" disabled >Choose a option</option>
                                             <option value="art-work">Custom Art Work</option>
                                             <option value="web-development">Web Development</option>
                                             <option value="collaboration">Artistic Collaboration</option>
@@ -98,8 +99,8 @@ const Contact = () => {
                                     />
                                 </div>
                                 <Button
-                                    type='submit'
-                                    className='w-full rounded-xl bg-gradient-to-r from-[#ec8cba] to-[#63a3eb] hover:from-purple-700 hover:to-amber-700 text-white font-medium py-3 transition-all duration-200 disabled:opacity-50'
+                                    type="submit"
+                                    className="w-full rounded-xl bg-gradient-to-r from-primary-rose to-primary-blue hover:from-purple-700 hover:to-amber-700 text-white font-medium py-3 transition-all duration-200 disabled:opacity-50"
                                     isDisabled = {!isValidForm()}
                                 >
                                     {
@@ -129,13 +130,13 @@ const Contact = () => {
                             </form>
                         </CardBody>
                     </Card>
-                    {/* Contact && Media Information */}
-                    <div className='space-y-8'>
+                    
+                    <div className="space-y-8">
                         <div>
                             <h3 className="text-2xl font-serif font-semibold text-slate-900 mb-6">Contact Information</h3>
-                            <div className='space-y-6'> 
-                                <div className='flex items-start space-x-4'>
-                                    <div className="w-12 h-12 bg-gradient-to-r from-[#ec8cba] to-[#63a3eb] rounded-lg flex items-center justify-center flex-shrink-0">
+                            <div className="space-y-6"> 
+                                <div className="flex items-start space-x-4">
+                                    <div className="w-12 h-12 bg-gradient-to-r from-primary-rose to-primary-blue rounded-lg flex items-center justify-center flex-shrink-0">
                                         <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path
                                                 strokeLinecap="round"
@@ -152,7 +153,7 @@ const Contact = () => {
                                     </div>
                                 </div>
                                 <div className="flex items-start space-x-4">
-                                    <div className="w-12 h-12 bg-gradient-to-r from-[#ec8cba] to-[#63a3eb] rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <div className="w-12 h-12 bg-gradient-to-r from-primary-rose to-primary-blue rounded-lg flex items-center justify-center flex-shrink-0">
                                         <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path
                                                 strokeLinecap="round"
@@ -169,7 +170,7 @@ const Contact = () => {
                                     </div>
                                 </div>
                                 <div className="flex items-start space-x-4">
-                                    <div className="w-12 h-12 bg-gradient-to-r from-[#ec8cba] to-[#63a3eb] rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <div className="w-12 h-12 bg-gradient-to-r from-primary-rose to-primary-blue rounded-lg flex items-center justify-center flex-shrink-0">
                                         <svg className="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                             <path 
                                                 fillRule="evenodd" 
@@ -179,13 +180,13 @@ const Contact = () => {
                                     </div>
                                     <div className="w-1/2">
                                         <h4 className="font-semibold tex-gray-00 mb-1">Phone Number</h4>
-                                        <div className="flex justify-between p-2">
+                                        <div className="flex justify-between items-center">
                                             <p className="text-gray-600">(+52) 951-463-9028</p>
-                                            <button className="border">
-                                                <svg className="w-6 h-6 text-gray-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                            <Button isIconOnly aria-label="Like" color="danger" size="sm">
+                                                <svg className="w-6 h-6 text-gray-100 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                     <path stroke="currentColor" strokeLinejoin="round" strokeWidth="2" d="M9 8v3a1 1 0 0 1-1 1H5m11 4h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-7a1 1 0 0 0-1 1v1m4 3v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-7.13a1 1 0 0 1 .24-.65L7.7 8.35A1 1 0 0 1 8.46 8H13a1 1 0 0 1 1 1Z"/>
                                                 </svg>
-                                            </button>
+                                            </Button>
                                         </div>
                                         <p className="text-sm text-slate-500 mt-1">Based on local timezone</p>
                                     </div>
@@ -214,7 +215,7 @@ const Contact = () => {
                         {/* <div>
                             <h4 className="font-semibold text-slate-900 mb-4">Follow me</h4>
                             
-                            <div className='flex space-x-3'>
+                            <div className="flex space-x-3">
                             </div>  
                         </div> */}
                     </div>

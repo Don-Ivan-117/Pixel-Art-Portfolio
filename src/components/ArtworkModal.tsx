@@ -24,7 +24,6 @@ const ArtworkModal = ({ isOpen, onClose, selectItem, displayedImg, displayedColo
                     <ModalBody className="overflow-y-auto">
                         <div className="max-w-5xl w-full mx-auto p-0">
                             <div className="grid md:grid-cols-2 gap-2 h-full">
-                                {/* Imagen */}
                                 <div className='relative'>
                                     <button className='absolute top-2 right-2 sm:hidden' onClick={()=> onClose()}>
                                         <svg 
@@ -43,13 +42,12 @@ const ArtworkModal = ({ isOpen, onClose, selectItem, displayedImg, displayedColo
                                         alt={selectItem.title}
                                         className="w-full h-full object-contain rounded-2xl"
                                         src={displayedImg}
+                                        loading="lazy"
                                         style={{backgroundColor: displayedBg}}
                                     />
                                 </div>
-                                {/* Details ArtWork */}
                                 <Card className="relative rounded-2xl overflow-hidden border-none shadow-none" style={{ background: `linear-gradient(135deg, ${displayedColors[0]} 50%, ${displayedColors[1] || displayedColors[0]} 50%)`}}>
                                     <CardHeader className="flex justify-between items-start px-6 pt-6">
-                                        {/* Paleta de colores */}
                                         <div className="flex space-x-2">
                                             {
                                                 displayedColors.map((color) => (
@@ -68,7 +66,6 @@ const ArtworkModal = ({ isOpen, onClose, selectItem, displayedImg, displayedColo
                                         <p className="text-gray-200 mt-2 text-base leading-relaxed max-w-md">
                                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, sed tempora. Pariatur, tenetur.
                                         </p>
-                                        {/* Botones de versión */}
                                         <div className="flex gap-3 mt-6 flex-wrap">
                                             <button className={`rounded-full border px-4 py-2 text-sm transition-all duration-300 ${!activeVersion ? "bg-gray-200 text-black font-semibold shadow-md": "bg-transparent text-white border-white"}`} onClick={() => setActiveVersion(null)}>
                                                 Original

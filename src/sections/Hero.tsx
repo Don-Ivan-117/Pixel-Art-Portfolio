@@ -1,13 +1,9 @@
 const Hero = () => {
     return (
-        <section id="hero" className="relative h-screen overflow-hidden bg-[#63a3eb]">
-
-            {/* Camino de Fondo */}
-            <div className="absolute bg-[#0e5fd2] bottom-0 w-full h-[40px] sm:h-[60px]" style={{ height: "60px" }}/>
-        
+        <section id="hero" className="relative h-screen overflow-hidden bg-primary-blue">
+            <div className="absolute bg-primary-blue-dark bottom-0 w-full h-[40px] sm:h-[60px]" style={{ height: "60px" }}/>
+            
             <div className="relative z-20 flex flex-col lg:flex-row h-full max-w-screen-xl mx-auto px-6">
-
-                {/* Columna de texto */}
                 <div className="flex-1 flex flex-col pt-8 justify-center text-center items-center lg:justify-center lg:items-start lg:text-left lg:pt-0">
                     <span className="uppercase text-white text-sm font-bold mb-2 block">
                         Portrait:
@@ -43,12 +39,11 @@ const Hero = () => {
                         &nbsp; Get started
                     </button>
                 </div>
-
-                {/* Columna de imagen */}
-                <div className=" flex-1 flex justify-center lg:justify-end items-end lg:items-center overflow-hidden">
+                <div className="flex-1 flex justify-center lg:justify-end items-end lg:items-center overflow-hidden">
                     <img
-                        src="src/assets/img/church.png"
                         alt="Retrato Iglesia"
+                        aria-hidden="true"
+                        src="src/assets/img/church.png"
                         className="max-h-full max-w-full object-contain mt-auto"
                     />
                 </div>

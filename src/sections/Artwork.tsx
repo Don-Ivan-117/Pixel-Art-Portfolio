@@ -1,8 +1,10 @@
-import { Card, CardBody, CardFooter, Image } from "@heroui/react"
 import { artWork } from "../data/artworks"
+import { Card, CardBody, CardFooter, Image } from "@heroui/react"
+import { Suspense, lazy } from "react";
+import HeadingUnderline from "../components/HeadingUnderline"
 import useArtworks from "../hooks/useArtwork"
-import ArtworkModal from "../components/ArtworkModal"
 
+const ArtworkModal = lazy(() => import("../components/ArtworkModal"))
 
 const Artwork = () => {
 
@@ -22,22 +24,22 @@ const Artwork = () => {
 
     return (
         <>
-            <section id="artwork" className='relative py-20 px-6 lg:px-12 bg-[#0e5fd2] overflow-hidden'>
-                <div  className='absolute inset-0 bg-[#f8f0e3] rounded-tl-[2rem] sm:rounded-tl-[3rem] z-0 smn:'/>
+            <section id="artwork" className="relative py-20 px-6 lg:px-12 bg-primary-blue-dark overflow-hidden">
+                <div  className="absolute inset-0 bg-neutral-cream rounded-tl-[2rem] sm:rounded-tl-[3rem] z-0 smn:"/>
 
-                <div className='relative max-w-7xl mx-auto z-10'>
-                    <div className='text-center mb-16'>
-                        <h2 className='text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6'>Digital Collection</h2>
-                        <div className="w-24 h-0.5 bg-gradient-to-r from-[#ec8cba] to-[#63a3eb] mx-auto mb-6" />
-                        <p className='text-lg text-gray-600 max-w-2xl fonts-popins mx-auto leading-relaxed'>
+                <div className="relative max-w-7xl mx-auto z-10">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6">Digital Collection</h2>
+                        <HeadingUnderline/>
+                        <p className="text-lg text-gray-600 max-w-2xl fonts-popins mx-auto leading-relaxed">
                             Each piece embodies a unique dialogue between technology and emotion, capturing moments of inspiration through contemporary visual forms.
                         </p>
                     </div>
                 </div>
 
-                <div className='gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
+                <div className="gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                     {artWork.map((artwork, index) => (
-                        <Card key={artwork.id} isPressable shadow="sm" className='bg-none bg-transparent' onPress={()=> handleOpen(artwork, index)}>
+                        <Card key={artwork.id} isPressable shadow="sm" className="bg-none bg-transparent" onPress={()=> handleOpen(artwork, index)}>
                             <CardBody className="overflow-visible p-0">
                                 <Image 
                                     alt={artwork.title}
@@ -64,7 +66,7 @@ const Artwork = () => {
                                         artwork.colors.map((color)=>(
                                             <div 
                                                 key={color}
-                                                className='w-4 h-4 rounded-full'
+                                                className="w-4 h-4 rounded-full"
                                                 style={{backgroundColor: color}}
                                             />
                                         ))
@@ -76,19 +78,20 @@ const Artwork = () => {
                 </div>
             </section>
 
-            {/* ArtWork Detail Modal */}
-            <ArtworkModal
-            activeVersion={activeVersion}
-            displayedBg={displayedBg}
-            displayedColors={displayedColors}
-            displayedImg={displayedImg}
-            isOpen={isOpen}
-            nextItem = {nextItem}
-            onClose={onClose}
-            previousItem = {previousItem}
-            selectItem={selectItem}
-            setActiveVersion={setActiveVersion}
-            />
+            <Suspense fallback={<div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">Loading</div>}>
+                <ArtworkModal
+                    activeVersion={activeVersion}
+                    displayedBg={displayedBg}
+                    displayedColors={displayedColors}
+                    displayedImg={displayedImg}
+                    isOpen={isOpen}
+                    nextItem={nextItem}
+                    onClose={onClose}
+                    previousItem={previousItem}
+                    selectItem={selectItem}
+                    setActiveVersion={setActiveVersion}
+                />
+            </Suspense>
         </>
         
     )
