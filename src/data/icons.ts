@@ -1,4 +1,4 @@
-import { GitHubIcon, LinkedInIcon, InstagramIcon } from '../icons/Index';
+import { GitHubIcon, LinkedInIcon, InstagramIcon } from '../icons/SocialIcons';
 
 export const iconList = [
     { 

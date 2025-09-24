@@ -30,9 +30,9 @@ export default function useArtworks() {
         setActiveVersion(null);
     };
 
-    const displayedImg = activeVersion ? activeVersion.img : selectItem?.img;
-    const displayedColors = activeVersion ? activeVersion.colors : selectItem?.colors;
-    const displayedBg = activeVersion ? activeVersion.colors[0] : selectItem?.primaryColor;
+    const displayedImg = (activeVersion?.img ?? selectItem?.img) ?? "";
+    const displayedColors = (activeVersion?.colors ?? selectItem?.colors) ?? [];
+    const displayedBg = (activeVersion?.colors[0] ?? selectItem?.primaryColor) ?? "#FFFFFF";
 
     return {
         isOpen,

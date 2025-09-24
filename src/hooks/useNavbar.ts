@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 
 export default function useNavbar() {
-    const [active, setActive] = useState("");
-    const [toggle, setToggle] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
@@ -17,10 +15,6 @@ export default function useNavbar() {
     }, []);
 
     return { 
-        active, 
-        setActive, 
-        toggle, 
-        setToggle, 
         scrolled, 
         isOpen, 
         setIsOpen 

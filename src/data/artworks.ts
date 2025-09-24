@@ -19,7 +19,6 @@ import TongueDog from '../assets/img/tongue_dog.png';
 
 import type { Artwork } from "../types";
 
-
 export const artWork: Artwork[] = [
     { 
         id: 1,
