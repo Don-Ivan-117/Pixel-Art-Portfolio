@@ -26,10 +26,11 @@ const About = () => {
                 </div>
             </div>
             <img
-                alt="flower"
+                alt=""
                 aria-hidden="true"
                 className="absolute w-full max-w-md bottom-0 opacity-30 lg:opacity-100"
-                src="src/assets/img/flowers.png"
+                loading="lazy"
+                src="src/assets/img/flowers.webp"
             />
         </section>
     )

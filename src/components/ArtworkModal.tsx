@@ -18,7 +18,7 @@ type ArtworkModalProps = {
 const ArtworkModal = ({ isOpen, onClose, selectItem, displayedImg, displayedColors, displayedBg, activeVersion, setActiveVersion, nextItem, previousItem}: ArtworkModalProps) => {
     if(!selectItem) return null;
     return (
-        <Modal backdrop="blur" isOpen={isOpen} onClose={onClose} size="5xl" hideCloseButton>
+        <Modal backdrop="blur" isOpen={isOpen} onClose={onClose} size="5xl" hideCloseButton className={`transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`}>
             <ModalContent className="flex flex-col gap-1 max-h-[100vh] bg-transparent shadow-none">
                 {(onClose) => (
                     <ModalBody className="overflow-y-auto">
@@ -79,10 +79,10 @@ const ArtworkModal = ({ isOpen, onClose, selectItem, displayedImg, displayedColo
                                     </CardBody>
                                     <CardFooter className="px-6 pb-6">
                                         <div className="flex justify-between pt-4 border-t border-white w-full">
-                                            <Button isIconOnly radius="full" className='bg-white' variant="light" onPress={() => previousItem()}>
+                                            <Button isIconOnly radius="full" className='bg-white' variant="light" onPress={() => previousItem()} aria-label="Previous artwork">
                                                 <PreviousIcon/>
                                             </Button>
-                                            <Button isIconOnly radius="full" className='bg-white' variant="light" onPress={() => nextItem()}>
+                                            <Button isIconOnly radius="full" className='bg-white' variant="light" onPress={() => nextItem()} aria-label="Next artwork">
                                                 <NextIcon />
                                             </Button>
                                         </div>

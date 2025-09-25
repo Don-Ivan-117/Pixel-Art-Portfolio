@@ -41,9 +41,9 @@ const Hero = () => {
                 </div>
                 <div className="flex-1 flex justify-center lg:justify-end items-end lg:items-center overflow-hidden">
                     <img
-                        alt="Retrato Iglesia"
+                        alt=""
                         aria-hidden="true"
-                        src="src/assets/img/church.png"
+                        src="src/assets/img/church.webp"
                         className="max-h-full max-w-full object-contain mt-auto"
                     />
                 </div>

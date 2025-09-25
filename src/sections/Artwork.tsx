@@ -1,5 +1,5 @@
 import { artWork } from "../data/artworks"
-import { Card, CardBody, CardFooter, Image } from "@heroui/react"
+import { Card, CardBody, CardFooter, Image, Spinner } from "@heroui/react"
 import { Suspense, lazy } from "react";
 import HeadingUnderline from "../components/HeadingUnderline"
 import useArtworks from "../hooks/useArtwork"
@@ -47,6 +47,7 @@ const Artwork = () => {
                                     style={{
                                         backgroundColor: artwork.primaryColor
                                     }}
+                                    loading="lazy"
                                     radius="none"
                                     shadow="none"
                                     src={artwork.img}
@@ -78,20 +79,20 @@ const Artwork = () => {
                 </div>
             </section>
 
-            <Suspense fallback={<div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">Loading</div>}>
-                <ArtworkModal
-                    activeVersion={activeVersion}
-                    displayedBg={displayedBg}
-                    displayedColors={displayedColors}
-                    displayedImg={displayedImg}
-                    isOpen={isOpen}
-                    nextItem={nextItem}
-                    onClose={onClose}
-                    previousItem={previousItem}
-                    selectItem={selectItem}
-                    setActiveVersion={setActiveVersion}
-                />
-            </Suspense>
+                    <Suspense fallback={<div className="fixed inset-0 bg-gray-600/50 z-50 flex items-center justify-center"><Spinner size="lg" color="white"/></div>}>
+                        <ArtworkModal
+                            activeVersion={activeVersion}
+                            displayedBg={displayedBg}
+                            displayedColors={displayedColors}
+                            displayedImg={displayedImg}
+                            isOpen={isOpen}
+                            nextItem={nextItem}
+                            onClose={onClose}
+                            previousItem={previousItem}
+                            selectItem={selectItem}
+                            setActiveVersion={setActiveVersion}
+                        />
+                    </Suspense>
         </>
         
     )
