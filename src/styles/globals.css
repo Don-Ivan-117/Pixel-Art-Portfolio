@@ -5,13 +5,13 @@
 
 @theme {
   /* Colores principales */
-    --color-primary-rose: #ec8cba;
-    --color-primary-blue: #63a3eb;
+  --color-primary-rose: #ec8cba;
+  --color-primary-blue: #63a3eb;
 
   /* Variaciones del azul */
   --color-primary-blue-dark: #0e5fd2;    /* Azul más oscuro - camino de fondo */
   --color-primary-blue-light: #3a6e96;   /* Azul más claro - cielo/fondo floral */
 
   /* Neutro / crema para secciones */
-    --color-neutral-cream: #f8f0e3;
+  --color-neutral-cream: #f8f0e3;
 }

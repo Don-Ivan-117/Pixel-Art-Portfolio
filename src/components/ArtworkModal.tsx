@@ -1,5 +1,5 @@
 import type { Artwork, Version } from "../types";
-import { NextIcon, PreviousIcon } from "../icons/MusicIcons";
+import { NextIcon, PreviousIcon } from "../icons/ActionIcons";
 import { Button, Card, CardBody, CardFooter, CardHeader, Modal, ModalBody, ModalContent } from "@heroui/react";
 
 type ArtworkModalProps = {
@@ -18,7 +18,7 @@ type ArtworkModalProps = {
 const ArtworkModal = ({ isOpen, onClose, selectItem, displayedImg, displayedColors, displayedBg, activeVersion, setActiveVersion, nextItem, previousItem}: ArtworkModalProps) => {
     if(!selectItem) return null;
     return (
-        <Modal backdrop="blur" isOpen={isOpen} onClose={onClose} size="5xl" hideCloseButton className={`transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`}>
+        <Modal backdrop="blur" isOpen={isOpen} onClose={onClose} size="5xl" hideCloseButton>
             <ModalContent className="flex flex-col gap-1 max-h-[100vh] bg-transparent shadow-none">
                 {(onClose) => (
                     <ModalBody className="overflow-y-auto">

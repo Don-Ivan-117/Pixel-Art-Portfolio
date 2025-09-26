@@ -9,7 +9,7 @@ const Hero = () => {
                         Portrait:
                     </span>
                     <h1 className="text-white font-extrabold text-4xl sm:text-5xl mb-6">
-                        Pixel 
+                        Pixel
                         <span className="block text-primary">
                             Artist
                         </span>

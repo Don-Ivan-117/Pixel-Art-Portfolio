@@ -15,10 +15,11 @@ const Artwork = () => {
         displayedImg,
         handleOpen,
         isOpen,
+        modalLoaded,
         nextItem,
         onClose,
         previousItem,
-        selectItem ,
+        selectItem,
         setActiveVersion,
     } = useArtworks();
 
@@ -47,7 +48,7 @@ const Artwork = () => {
                                     style={{
                                         backgroundColor: artwork.primaryColor
                                     }}
-                                    loading="lazy"
+                                    // loading="lazy"
                                     radius="none"
                                     shadow="none"
                                     src={artwork.img}
@@ -79,6 +80,8 @@ const Artwork = () => {
                 </div>
             </section>
 
+            {
+                modalLoaded && (
                     <Suspense fallback={<div className="fixed inset-0 bg-gray-600/50 z-50 flex items-center justify-center"><Spinner size="lg" color="white"/></div>}>
                         <ArtworkModal
                             activeVersion={activeVersion}
@@ -93,6 +96,8 @@ const Artwork = () => {
                             setActiveVersion={setActiveVersion}
                         />
                     </Suspense>
+                )
+            }
         </>
         
     )

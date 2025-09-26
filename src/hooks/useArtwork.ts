@@ -1,13 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDisclosure } from "@heroui/react"; // O de donde lo importes
 import { artWork } from "../data/artworks";
 import type { Artwork, Version } from "../types";
 
 export default function useArtworks() {
-    const { isOpen, onOpen, onClose } = useDisclosure();
+    const {isOpen, onOpen, onClose } = useDisclosure();
     const [selectItem, setSelectItem] = useState<Artwork | null>(null);
     const [currentItem, setCurrentItem] = useState(0);
     const [activeVersion, setActiveVersion] = useState<Version | null>(null);
+    const [modalLoaded, setModalLoaded ] = useState(false);
+
+    useEffect(() => {
+        if (isOpen) {
+            setModalLoaded(true)
+        }
+    }, [isOpen])
 
     const handleOpen = (item: Artwork, index: number) => {
         setSelectItem(item);
@@ -15,6 +22,12 @@ export default function useArtworks() {
         setActiveVersion(null);
         onOpen();
     };
+
+    const handleClose = () => {
+        onClose();
+        setSelectItem(null);
+        setCurrentItem(0);
+    }
 
     const nextItem = () => {
         const nextIndex = (currentItem + 1) % artWork.length;
@@ -35,18 +48,20 @@ export default function useArtworks() {
     const displayedBg = (activeVersion?.colors[0] ?? selectItem?.primaryColor) ?? "#FFFFFF";
 
     return {
-        isOpen,
-        onOpen,
-        onClose,
-        selectItem,
-        currentItem,
         activeVersion,
-        handleOpen,
-        nextItem,
-        previousItem,
-        displayedImg,
-        displayedColors,
+        currentItem,
         displayedBg,
+        displayedColors,
+        displayedImg,
+        handleClose,
+        handleOpen,
+        isOpen,
+        modalLoaded,
+        nextItem,
+        onClose,
+        onOpen,
+        previousItem,
+        selectItem,
         setActiveVersion,
     };
 }

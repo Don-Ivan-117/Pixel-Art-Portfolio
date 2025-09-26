@@ -1,6 +1,8 @@
 import { Button, Card, CardBody } from "@heroui/react"
 import useForm from "../hooks/useForm";
 import HeadingUnderline from "../components/HeadingUnderline";
+import CopyToClip from "../components/CopyToClip";
+import { EmailIcon, UbicationIcon, PhoneIcon } from "../icons/ContactIcons";
 
 const Contact = () => {
 
@@ -8,9 +10,11 @@ const Contact = () => {
         contactForm,
         isSubmitting,
         submitStatus,
+        handleCopy,
         handleSubmit,
         handleInputChange,
-        isValidForm
+        isValidForm,
+        itsCopyID
     } = useForm();
 
     return (
@@ -137,58 +141,40 @@ const Contact = () => {
                             <div className="space-y-6"> 
                                 <div className="flex items-start space-x-4">
                                     <div className="w-12 h-12 bg-gradient-to-r from-primary-rose to-primary-blue rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth={2}
-                                                d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                                            />
-                                        </svg>
+                                        <EmailIcon/>
                                     </div>
-                                    <div>
+                                    <div className="w-full md:w-1/2">
                                         <h4 className="font-semibold text-slate-900 mb-1">E-mail</h4>
-                                        <p className="text-slate-600">cruzpereziver@gmail.com</p>
-                                        <p className="text-sm text-slate-500 mt-1">Reply within 24-48 hours</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-start space-x-4">
-                                    <div className="w-12 h-12 bg-gradient-to-r from-primary-rose to-primary-blue rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth={2}
-                                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                                            />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h4 className="font-semibold text-slate-900 mb-1">Ubication</h4>
-                                        <p className="text-slate-600">Oaxaca, México</p>
-                                        <p className="text-sm text-slate-500 mt-1">Available for remote work</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-start space-x-4">
-                                    <div className="w-12 h-12 bg-gradient-to-r from-primary-rose to-primary-blue rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <svg className="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                            <path 
-                                                fillRule="evenodd" 
-                                                d="M5 4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4Zm12 12V5H7v11h10Zm-5 1a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H12Z" 
-                                                clipRule="evenodd"/>
-                                        </svg>
-                                    </div>
-                                    <div className="w-1/2">
-                                        <h4 className="font-semibold tex-gray-00 mb-1">Phone Number</h4>
-                                        <div className="flex justify-between items-center">
-                                            <p className="text-gray-600">(+52) 951-463-9028</p>
-                                            <Button isIconOnly aria-label="Like" color="danger" size="sm">
-                                                <svg className="w-6 h-6 text-gray-100 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                                    <path stroke="currentColor" strokeLinejoin="round" strokeWidth="2" d="M9 8v3a1 1 0 0 1-1 1H5m11 4h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-7a1 1 0 0 0-1 1v1m4 3v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-7.13a1 1 0 0 1 .24-.65L7.7 8.35A1 1 0 0 1 8.46 8H13a1 1 0 0 1 1 1Z"/>
-                                                </svg>
-                                            </Button>
+                                        <div className="flex justify-between items-center p-2 bg-[#f8f0e3]/60 backdrop-blur-md rounded-xl shadow-sm">
+                                            <p className="text-gray-700 font-medium tracking-wide">cruzpereziver@gmail.com</p>
+                                            <CopyToClip id="contact-email" text="cruzpereziver@gmail.com" itsCopyID={itsCopyID === "contact-email"} handleCopy={(text) => handleCopy("contact-email", text)}/>
                                         </div>
-                                        <p className="text-sm text-slate-500 mt-1">Based on local timezone</p>
+                                            <p className="text-sm text-slate-500 mt-1">Reply within 24-48 hours</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start space-x-4">
+                                    <div className="w-12 h-12 bg-gradient-to-r from-primary-rose to-primary-blue rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <PhoneIcon/>
+                                    </div>
+                                    <div className="w-full md:w-1/2">
+                                        <h4 className="font-semibold tex-gray-00 mb-1">Phone Number</h4>
+                                        <div className="flex justify-between items-center p-2 bg-[#f8f0e3]/60 backdrop-blur-md rounded-xl shadow-sm">
+                                            <p className="text-gray-700 font-medium tracking-wide">(+52) 951-463-9028</p>
+                                            <CopyToClip id="contact-number" text="9514639028" itsCopyID={itsCopyID === "contact-number"} handleCopy={(text) => handleCopy("contact-number", text)} />
+                                        </div>
+                                        <p className="text-sm text-slate-500 mt-1">Best time to call: 9am to 6pm CST</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start space-x-4">
+                                    <div className="w-12 h-12 bg-gradient-to-r from-primary-rose to-primary-blue rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <UbicationIcon/>
+                                    </div>
+                                    <div className="w-full md:w-1/2">
+                                        <h4 className="font-semibold text-slate-900 mb-1">Ubication</h4>
+                                        <div className="flex justify-between items-center p-2 bg-[#f8f0e3]/60 backdrop-blur-md rounded-xl shadow-sm">
+                                            <p className="text-slate-600">Oaxaca, México</p>
+                                        </div>
+                                        <p className="text-sm text-slate-500 mt-1">Available for remote work</p>
                                     </div>
                                 </div>
                             </div>

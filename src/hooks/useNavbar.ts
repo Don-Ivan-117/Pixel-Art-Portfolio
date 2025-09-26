@@ -15,8 +15,8 @@ export default function useNavbar() {
     }, []);
 
     return { 
-        scrolled, 
         isOpen, 
+        scrolled, 
         setIsOpen 
     };
 }
